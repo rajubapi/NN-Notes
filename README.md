@@ -39,6 +39,8 @@ Just chuck the `This commit will` part.
 
 ## References
 
+### Perceptron
+
 * [Perceptron](https://towardsdatascience.com/what-the-hell-is-perceptron-626217814f53)
 
 
