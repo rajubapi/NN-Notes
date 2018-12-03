@@ -1,1 +1,4 @@
 .ipynb*
+
+# Ignore
+.DS_Store
