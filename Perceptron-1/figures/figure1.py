@@ -78,4 +78,5 @@ def draw(vectors):
                angles='xy', scale_units='xy', scale=1)
     plt.xlim(-20, 20)
     plt.ylim(-20, 20)
+    plt.grid(True)
     plt.show()
