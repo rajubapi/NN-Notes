@@ -4,7 +4,7 @@ This repository will  house the entire blog for the course taught by Dr. Bapi S.
 
 ## Rubric
 
-* Create a new branch for each sub-topic. They will later be merged into their own respective branches, Perceptron, MLFFNN, and 
+* Create a new branch for each sub-topic. They will later be merged into their own respective branches: Perceptron, MLFFNN, and 
 SVM
 
 * Each branch would be prefixed with your name to avoid confusions eg: `sai/hot-stuff`, here hot stuff is the brach name. You 
