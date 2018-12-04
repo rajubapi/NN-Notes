@@ -4,30 +4,34 @@ This repository will  house the entire blog for the course taught by Dr. Bapi S.
 
 ## Rubric
 
-* Create a new branch for each topic
+* Create a new branch for each sub-topic. They will later be merged into their own respective branches, Perceptron, MLFFNN, and 
+SVM
 
-* Each branch would be prefixed with `s/` or `k/` to avoid confusions
+* Each branch would be prefixed with your name to avoid confusions eg: `sai/hot-stuff`, here hot stuff is the brach name. You 
+should let it be the the name of the topic that you are working on
 
 * Each branch will house only a single directory. All the files must reside inside it
 
-* All your code for drwaing a figure would reside in a separate `.py` file. A new figure for each figure
+* All your code for drwaing a figure would reside in a separate `.py` file.
 
-* These files will then be imported into the jupyter notebook. You may choose to write a single function called `display()`  with necessary parameters so display the figure. This way the notebook will house only the important stuff. Peeps can have a peek if they choose so...
+* These files created then shall be imported into the jupyter notebook. You may choose to write a single function called 
+`display()`  with necessary parameters to display the figure. This way the notebook will house only the important stuff. Peeps 
+can have a peek at the code if they choose so...
 
 
 ## Commit message format
 
-* The commits must be in imperative mood. The best way to obtain it will be like so:
+* The commits must be in imperative mood. The best way to obtain it is like so:
 
 Consider that you have made a commit which does the follows:
 
-```python
+```
 This commit will add the draw function
 ```
 
 Your commit message will look like so:
 
-```python
+```
 Add the draw function
 ```
 
