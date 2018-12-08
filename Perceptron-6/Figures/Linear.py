@@ -8,8 +8,9 @@ def display(xaxis,yaxis):
 
 def linear(input):
         return input
-x = list(np.arange(-10.0,10.0,0.0001))
-y = []
-for val in x:
-    y.append(linear(val))
-display(x,y)
+def draw():
+        x = list(np.arange(-10.0,10.0,0.0001))
+        y = []
+        for val in x:
+                y.append(linear(val))
+        display(x,y)

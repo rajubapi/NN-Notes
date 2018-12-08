@@ -9,8 +9,9 @@ def display(xaxis,yaxis):
 def sigmoid(input):
     return 1/(1+math.exp(-input))
 
-x = list(np.arange(-10,10,0.0001))
-y = []
-for val in x:
-    y.append(sigmoid(val))
-display(x,y)
+def draw():
+    x = list(np.arange(-10,10,0.0001))
+    y = []
+    for val in x:
+        y.append(sigmoid(val))
+    display(x,y)

@@ -40,13 +40,15 @@ def drawFeasibleRegion(data):
 
     #Shade the intersection region
     plt.fill_between(x,y8,y7,color="green",alpha='0.5')
-    plt.xlim(-8,8)
-    plt.ylim(-8,8)
+    plt.xlim(-6,6)
+    plt.ylim(-6,6)
     plt.grid(True)
     rect1 = Rectangle((0, 0), 1, 1, fc="g", alpha=0.5)
     plt.legend([rect1,ax1,ax2],["Feasible Region","Dataset 1","Dataset 2"])
     plt.show()
 
-# Create a data set
-data = np.array([[-5,5],[5,5],[-5,-5],[5,-5]], dtype=np.float128)
-drawFeasibleRegion(data)
+def draw():
+    data = np.array([[-5,5],[5,5],[-5,-5],[5,-5]], dtype=np.float128)
+    drawFeasibleRegion(data)    
+
+draw()

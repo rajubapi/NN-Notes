@@ -30,10 +30,8 @@ def drawVectorAndHyperPlane(data,desired):
             plt.legend([rect1,rect2],["Right side","Wrong Side"],loc="upper right")
     plt.show()
 
-
-# Create a data set
-data = np.array([[-5,5],[5,5],[-5,-5],[5,-5]], dtype=np.float128)
-desired=np.array([1,1,0,0], dtype=np.float128)
-drawVectorAndHyperPlane(data,desired)
-
+def draw():
+    data = np.array([[-5,5],[5,5],[-5,-5],[5,-5]], dtype=np.float128)
+    desired=np.array([1,1,0,0], dtype=np.float128)
+    drawVectorAndHyperPlane(data,desired)
 

@@ -9,8 +9,9 @@ def display(xaxis,yaxis):
 def Relu(input):
     return max(0,input)
     
-x = list(np.arange(-10.0,10.0,0.0001))
-y = []
-for val in x:
-    y.append(Relu(val))
-display(x,y)
+def draw():
+    x = list(np.arange(-10.0,10.0,0.0001))
+    y = []
+    for val in x:
+        y.append(Relu(val))
+    display(x,y)

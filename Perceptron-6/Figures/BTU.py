@@ -11,8 +11,9 @@ def BTU(input):
         return 1
     else:
         return 0
-x = list(np.arange(-10.0,10.0,0.0001))
-y = []
-for val in x:
-    y.append(BTU(val))
-display(x,y)
+def draw():
+    x = list(np.arange(-10.0,10.0,0.0001))
+    y = []
+    for val in x:
+        y.append(BTU(val))
+    display(x,y)
