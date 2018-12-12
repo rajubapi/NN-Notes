@@ -1,6 +1,6 @@
 # NN-Notes
 
-This repository will house the entire blog for the course taught by Dr. Raju S. Bapi, SCIS, UoH
+This repository will house the entire blog for the course taught by Dr. Raju S. Bapi, SCIS, UoH. Click [here](https://github.com/somanath08/NN-Notes/blob/master/contribution.md) to know more about contributing.
 
 ## TODO
 
