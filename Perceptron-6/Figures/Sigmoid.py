@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-def display(xaxis,yaxis):
+def display(xaxis,yaxis,title):
     plt.plot(xaxis,yaxis)
     plt.grid()
+    plt.title(title)
     plt.show()
 
 def sigmoid(input):
@@ -14,4 +15,11 @@ def draw():
     y = []
     for val in x:
         y.append(sigmoid(val))
-    display(x,y)
+    display(x,y,"Sigmoid")
+
+def drawDerivative():
+    x = list(np.arange(-10,10,0.0001))
+    y = []
+    for val in x:
+        y.append(sigmoid(val)*(1-sigmoid(val)))
+    display(x,y,"Sigmoid Derivative")
