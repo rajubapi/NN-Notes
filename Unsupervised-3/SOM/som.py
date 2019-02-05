@@ -257,6 +257,7 @@ class SOM(object):
         :param data: {numpy.ndarray} data to visualize with the SOM
         :param targets: {list/array} array of target classes (0 to len(targetnames)) corresponding to data
         :param targetnames: {list/array} names describing the target classes given in targets
+        :param epoch: {int} The epoch number that the som is curruntly in while training
         :param filename: {str} optional, if given, the plot is saved to this location
         :param colors: {list/array} optional, if given, different classes are colored in these colors
         :param markers: {list/array} optional, if given, different classes are visualized with these markers
@@ -289,7 +290,10 @@ class SOM(object):
                     markers[targets[cnt]], color=c, markersize=12)
 
         ax.set_aspect('equal')
-        ax.set_title("Epoch: " + str(epoch))
+        ax.text(0.95, 0.01, 'Epoch: ' + str(epoch),
+                verticalalignment='bottom', horizontalalignment='right',
+                transform=ax.transAxes,
+                color='green', fontsize=14)
         ax.set_xlim([0, self.x])
         ax.set_ylim([0, self.y])
         plt.xticks(np.arange(.5, self.x + .5), range(self.x))
