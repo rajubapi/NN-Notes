@@ -92,7 +92,7 @@ class SOM(object):
         self.map -= h * self.alphas[self.epoch] * (self.map - vector)
 
         print("Epoch %i;    Neuron [%i, %i];    \tSigma: %.4f;    alpha: %.4f" %
-              (self.epoch, w[0], w[1], self.sigmas[self.epoch], self.alphas[self.epoch]))
+              (self.epoch, w[0], w[1], self.sigmas[self.epoch], self.alphas[self.epoch]), end='\r')
         self.epoch = self.epoch + 1
 
     def fit(self, data, targets, epochs=0, save_e=False, interval=1000, decay='hill'):
@@ -288,12 +288,9 @@ class SOM(object):
             w = self.winner(xx)
             ax.plot(w[1] + .5 + 0.1 * np.random.randn(1), w[0] + .5 + 0.1 * np.random.randn(1),
                     markers[targets[cnt]], color=c, markersize=12)
-
+        ax.plot(w[0], w[1], 'g*', markersize=24)
         ax.set_aspect('equal')
-        ax.text(0.95, 0.01, 'Epoch: ' + str(epoch),
-                verticalalignment='bottom', horizontalalignment='right',
-                transform=ax.transAxes,
-                color='green', fontsize=14)
+        fig.suptitle('Epoch: ' + str(epoch), fontsize=14, fontweight='bold')
         ax.set_xlim([0, self.x])
         ax.set_ylim([0, self.y])
         plt.xticks(np.arange(.5, self.x + .5), range(self.x))
@@ -305,6 +302,10 @@ class SOM(object):
                        for i in range(len(targetnames))]
             legend = plt.legend(handles=patches, bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=len(targetnames),
                                 mode="expand", borderaxespad=0.1)
+            # legend = plt.legend(handles=patches, bbox_to_anchor=(
+            #    1.05, 1), loc=3, ncol=len(targetnames), borderaxespad=0.)
+            # legend = ax.legend(loc='upper center',
+            #                   shadow=True, fontsize='x-large')
             legend.get_frame().set_facecolor('#e5e5e5')
 
         if mol_dict:
