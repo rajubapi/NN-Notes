@@ -104,6 +104,7 @@ class SOM(object):
         :param interval: {int} interval of epochs to use for saving training errors
         :param decay: {str} type of decay for alpha and sigma. Choose from 'hill' (Hill function) and 'linear', with
             'hill' having the form ``y = 1 / (1 + (x / 0.5) **4)``
+        :return: The list images of all the plots for each epoch
         """
         self.interval = interval
         if not self.inizialized:
