@@ -25,10 +25,21 @@ class SOM(object):
             np.arange(x * y, dtype=int).reshape(x, y), (x, y)), 2)
         self.distmap = np.zeros((self.x, self.y))
         self.winner_indices = np.array([])
-        self.pca = None  # attribute to save potential PCA to for saving and later reloading
         self.inizialized = False
         self.error = 0.  # reconstruction error
-        self.history = list()  # reconstruction error training history
+
+    def man_dist_pbc(self, m, vector, shape=(10, 10)):
+            """ Manhattan distance calculation of coordinates with periodic boundary condition
+
+        :param m: {numpy.ndarray} array / matrix
+        :param vector: {numpy.ndarray} array / vector
+        :param shape: {tuple} shape of the SOM
+        :return: {numpy.ndarray} Manhattan distance for v to m
+        """
+        dims = np.array(shape)
+        delta = np.abs(m - vector)
+        delta = np.where(delta > 0.5 * dims, np.abs(delta - dims), delta)
+        return np.sum(delta, axis=len(m.shape) - 1)
 
     def initialize(self, data):
         """ Initialize the SOM neurons
@@ -58,7 +69,7 @@ class SOM(object):
         """
         w = self.winner(vector)
         # get Manhattan distance (with PBC) of every neuron in the map to the winner
-        dists = man_dist_pbc(self.indxmap, w, self.shape)
+        dists = self.man_dist_pbc(self.indxmap, w, self.shape)
         # smooth the distances with the current sigma
         h = np.exp(-(dists / self.sigmas[self.epoch])
                    ** 2).reshape(self.x, self.y, 1)
