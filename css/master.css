@@ -43,6 +43,8 @@ img.center {
 
 .card-text {
   font-size: 85%;
+  text-align: center;
+  width: auto;
 }
 
 footer {
