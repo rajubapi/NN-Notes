@@ -80,7 +80,7 @@ class SOM:
               (self.epoch, w[0], w[1], self.sigmas[self.epoch], self.alphas[self.epoch]), end='\r')
         self.epoch = self.epoch + 1
 
-    def fit(self, data, targets, epochs=0):
+    def fit(self, data, epochs=0):
         """ Train the SOM on the given data for several iterations
 
         :param data: {numpy.ndarray} data to train on
@@ -106,11 +106,11 @@ class SOM:
         images = []
 
         for i in range(epochs):
-            images.append(self.get_plot_image(data),
-                          winner=self.winner(data[indx[i]]))
+            images.append(self.get_plot_image(
+                data, winner=self.winner(data[indx[i]])))
             self.cycle(data[indx[i]])
-            images.append(self.get_plot_image(data),
-                          winner=self.winner(data[indx[i]]))
+            images.append(self.get_plot_image(
+                data, winner=self.winner(data[indx[i]])))
         print("Writing the gif file...")
         imageio.mimwrite('./Images/som-training.gif', np.array(images), fps=1)
 
@@ -127,7 +127,7 @@ class SOM:
         # Plot the neurons
         plt.plot(self.map[:, 0], self.map[:, 1], label='SOM Map')
         # Plot the winner neuron
-        if winner:
+        if winner is not None:
             plt.plot(winner[0], winner[1], 'r*', label='Winner')
         fig.canvas.draw()
         image = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
