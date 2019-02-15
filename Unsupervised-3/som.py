@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import imageio
 
 
-class SOM(object):
+class SOM:
     def __init__(self, x, y, alpha_start=0.6, seed=42):
         """ Initialize the SOM object with a given map size
 
@@ -29,8 +30,7 @@ class SOM(object):
         self.error = 0.  # reconstruction error
 
     def man_dist_pbc(self, m, vector, shape=(10, 10)):
-            """ Manhattan distance calculation of coordinates with periodic boundary condition
-
+        """ Manhattan distance calculation of coordinates with periodic boundary condition
         :param m: {numpy.ndarray} array / matrix
         :param vector: {numpy.ndarray} array / vector
         :param shape: {tuple} shape of the SOM
@@ -104,12 +104,33 @@ class SOM(object):
         self.sigmas = self.sigma / (1 + (epoch_list / 0.5) ** 4)
 
         images = []
-        presented_data = []
-        presented_targets = []
+
         for i in range(epochs):
+            images.append(self.get_plot_image(data),
+                          winner=self.winner(data[indx[i]]))
             self.cycle(data[indx[i]])
-            presented_data.append(data[indx[i]])
-            presented_targets.append(targets[indx[i]])
-            images.append(self.plot_point_map(presented_data,
-                                              presented_targets, ['Class 0', 'Class 1'], i))
-            return images
+            images.append(self.get_plot_image(data),
+                          winner=self.winner(data[indx[i]]))
+        print("Writing the gif file...")
+        imageio.mimwrite('./Images/som-training.gif', np.array(images), fps=1)
+
+    def get_plot_image(self, data, winner=None):
+        """ Get the image of a single plot to make the gif
+
+        :param data; The data
+        :param winner: The coordinates of the winning neuron
+        returns the image of the plot
+        """
+        fig = plt.figure()
+        # Plot the data
+        plt.plot(data[:, 0], data[:, 1], label='Data')
+        # Plot the neurons
+        plt.plot(self.map[:, 0], self.map[:, 1], label='SOM Map')
+        # Plot the winner neuron
+        if winner:
+            plt.plot(winner[0], winner[1], 'r*', label='Winner')
+        fig.canvas.draw()
+        image = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
+        image = image.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+        plt.close()
+        return image
