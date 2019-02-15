@@ -78,21 +78,20 @@ class SOM:
               (self.epoch, w[0], w[1], self.sigmas[self.epoch], self.alphas[self.epoch]), end='\r')
         self.epoch = self.epoch + 1
 
-    def fit(self, data, epochs=0, data2=None):
+    def fit(self, data, epochs, data2=None):
         """ Train the SOM on the given data for several iterations
 
         :param data: {numpy.ndarray} data to train on
         :param epochs: {int} number of iterations to train; if 0, epochs=len(data) and every data point is used once
-        :param data2; The data of class two
+        :param data2: The data of class two
         """
         if not self.inizialized:
             self.initialize(data)
-        if not epochs:
-            epochs = len(data)
-            indx = np.random.choice(
-                np.arange(len(data)), epochs, replace=False)
-        else:
-            indx = np.random.choice(np.arange(len(data)), epochs)
+        if data2 is not None:
+            data = np.concatenate((data, data2), axis=0)
+
+        indx = np.random.choice(
+                np.arange(len(data)), epochs)
 
         # get alpha and sigma decays for given number of epochs or for hill decay
         epoch_list = np.linspace(0, 1, epochs)
@@ -150,7 +149,7 @@ class SOM:
         fig = plt.figure()
         # Plot the data
         plt.scatter(data_c1[:, 0], data_c1[:, 1], label='Class 1')
-        plt.scatter(data_c1[:, 0], data_c1[:, 1], label='Class 2')
+        plt.scatter(data_c2[:, 0], data_c2[:, 1], label='Class 2')
         # Plot the neurons
         plt.scatter(self.map[:, :, 0], self.map[:, :, 1], label='SOM Map')
         plt.legend()
