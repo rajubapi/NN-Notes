@@ -106,15 +106,14 @@ class SOM:
         images = []
 
         for i in range(epochs):
-            images.append(self.get_plot_image(
-                data, winner=self.winner(data[indx[i]])))
             self.cycle(data[indx[i]])
-            images.append(self.get_plot_image(
-                data, winner=self.winner(data[indx[i]])))
-        print("Writing the gif file...")
-        imageio.mimwrite('./Images/som-training.gif', np.array(images), fps=1)
+            images.append(self.get_plot_image(data, i))
+        print("\nWriting the gif file...")
+        imageio.mimwrite('./Images/som-training.gif',
+                         np.array(images), fps=15)
+        print("Done")
 
-    def get_plot_image(self, data, winner=None):
+    def get_plot_image(self, data, epoch):
         """ Get the image of a single plot to make the gif
 
         :param data; The data
@@ -123,12 +122,11 @@ class SOM:
         """
         fig = plt.figure()
         # Plot the data
-        plt.plot(data[:, 0], data[:, 1], label='Data')
+        plt.scatter(data[:, 0], data[:, 1], label='Data')
         # Plot the neurons
-        plt.plot(self.map[:, 0], self.map[:, 1], label='SOM Map')
-        # Plot the winner neuron
-        if winner is not None:
-            plt.plot(winner[0], winner[1], 'r*', label='Winner')
+        plt.scatter(self.map[:, :, 0], self.map[:, :, 1], label='SOM Map')
+        plt.legend()
+        plt.title("Epoch: " + str(epoch))
         fig.canvas.draw()
         image = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
         image = image.reshape(fig.canvas.get_width_height()[::-1] + (3,))
