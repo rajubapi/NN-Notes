@@ -45,8 +45,6 @@ class SOM:
         """ Initialize the SOM neurons
 
         :param data: {numpy.ndarray} data to use for initialization
-        :param how: {str} how to initialize the map, available: 'pca' (via 4 first eigenvalues) or 'random' (via random
-            values normally distributed like data)
         :return: initialized map in self.map
         """
         self.map = np.random.normal(np.mean(data), np.std(
@@ -80,14 +78,12 @@ class SOM:
               (self.epoch, w[0], w[1], self.sigmas[self.epoch], self.alphas[self.epoch]), end='\r')
         self.epoch = self.epoch + 1
 
-    def fit(self, data, epochs=0):
+    def fit(self, data, epochs=0, data2=None):
         """ Train the SOM on the given data for several iterations
 
         :param data: {numpy.ndarray} data to train on
         :param epochs: {int} number of iterations to train; if 0, epochs=len(data) and every data point is used once
-        :param decay: {str} type of decay for alpha and sigma. Choose from 'hill' (Hill function) and 'linear', with
-            'hill' having the form ``y = 1 / (1 + (x / 0.5) **4)``
-        :return: The list images of all the plots for each epoch
+        :param data2; The data of class two
         """
         if not self.inizialized:
             self.initialize(data)
@@ -106,23 +102,55 @@ class SOM:
         images = []
 
         for i in range(epochs):
-            self.cycle(data[indx[i]])
-            images.append(self.get_plot_image(data, i))
-        print("\nWriting the gif file...")
-        imageio.mimwrite('./Images/som-training.gif',
-                         np.array(images), fps=15)
+            if data2 is None:
+                self.cycle(data[indx[i]])
+                images.append(self.get_plot_image(data, i))
+            else:
+                self.cycle(data[indx[i]])
+                images.append(
+                    self.get_plot_image_for_two_classes(data, data2, i))
+        if data2 is None:
+            print("\nWriting the gif file...")
+            imageio.mimwrite('./Images/som-training.gif',
+                             np.array(images), fps=15)
+        else:
+            print("\nWriting the gif file...")
+            imageio.mimwrite('./Images/som-training-two-classes.gif',
+                             np.array(images), fps=15)
         print("Done")
 
     def get_plot_image(self, data, epoch):
         """ Get the image of a single plot to make the gif
 
-        :param data; The data
+        :param data: The data 
         :param winner: The coordinates of the winning neuron
         returns the image of the plot
         """
         fig = plt.figure()
         # Plot the data
-        plt.scatter(data[:, 0], data[:, 1], label='Data')
+        plt.scatter(data[:, 0], data[:, 1], label='Class 2')
+        # Plot the neurons
+        plt.scatter(self.map[:, :, 0], self.map[:, :, 1], label='SOM Map')
+        plt.legend()
+        plt.title("Epoch: " + str(epoch))
+        fig.canvas.draw()
+        image = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
+        image = image.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+        plt.close()
+        return image
+
+    def get_plot_image_for_two_classes(self, data_c1, data_c2, epoch):
+        """ Get the image of a single plot to make the gif
+
+        :param data_c1: The data of class 1
+        :param data_c2: The data of class 2
+        :param winner: The coordinates of the winning neuron
+        returns the image of the plot
+        """
+        fig = plt.figure()
+        # Plot the data
+        plt.scatter(data_c1[:, 0], data_c1[:, 1], label='Class 1')
+        plt.scatter(data_c1[:, 0], data_c1[:, 1], label='Class 2')
         # Plot the neurons
         plt.scatter(self.map[:, :, 0], self.map[:, :, 1], label='SOM Map')
         plt.legend()
