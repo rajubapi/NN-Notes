@@ -13213,6 +13213,12 @@ div#notebook {
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="c1"># Train</span>
 <span class="n">kohen_map</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="c1">## For two classes</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">som</span> <span class="o">=</span> <span class="n">SOM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">som</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">data2</span><span class="o">=</span><span class="n">data2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13232,6 +13238,9 @@ div#notebook {
 <pre>Epoch 499;    Neuron [3, 5];    	Sigma: 0.2941;    alpha: 0.0353
 Writing the gif file...
 Done
+Epoch 499;    Neuron [4, 3];    	Sigma: 0.2941;    alpha: 0.0353
+Writing the gif file...
+Done
 </pre>
 </div>
 </div>
@@ -13245,6 +13254,7 @@ Done
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Re-run this cell after executing the above cell to get the updated plot</strong></p>
 <p><img src="./Images/som-training.gif" /></p>
+<h3 id="Similarly,-for-two-classes...">Similarly, for two classes...<a class="anchor-link" href="#Similarly,-for-two-classes...">&#182;</a></h3><p><img src="./Images/som-training-two-classes.gif" /></p>
 
 </div>
 </div>
