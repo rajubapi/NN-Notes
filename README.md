@@ -4,12 +4,27 @@ This repository will house the entire blog for the course taught by Dr. Raju S. 
 
 ## TODO
 
-* One thing
+## MLFNN
+	* To include a step-by-step process (preprocessing, network desgin, training and validation) of implementing a real world example. For example, Face Recognition, Stock Market Prediction, Bankruptcy Prediction, etc. 
 
-* Another thing
+## RBF Network
+	* Theory (additive model), Algorithm, Implementation example
 
-* Also a thrid one
+## Single hidden layer feedforward neural network (SLFN)
+	* This idea goes back to the original perceptron of Rosenblatt, where the input layer (Retina) is connected with random weights to the hidden layer (Association Cortex) and then onto the output layer (Motor Cortex) by learnable weights. Recently there are exciting new developments in these kind of random networks. For example, Extreme Learning Machine (ELM) and Random Vector Functional Link (RVFL) Neural Networks. 
+	* Theory, Algorithm, Example of ELM
+	* Theory, Algorithm, Example of RVFL NN
 
+## Limitations of Multilayer Perceptrons
+	* Vansihing gradient problem with increase in number of hidden layers of an MLP
+		- ReLU as a solution
+		- Layer-wise training as a strategy
+	* Inability to work with differing input sizes (images of different sizes, for example)
+	* Parameter explosion problem with standard MLP (with sigmoid or ReLU)
+		- Convolution and parameter sharing as a way of reducing the number of learnable parameters
+
+## CNN
+	* Building blocks of CNN (Padding, Filters, Detector, 1x1 filter, etc)
 * Okay lot of work
 
 ## Hyperlink to notes
