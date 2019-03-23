@@ -62,10 +62,27 @@ This repository will house the entire blog for the course taught by Dr. Raju S. 
 	* Simulated Annealing
 	* Contrastive divergence learning rule
 
-## RBM and DBN
+### RBM and DBN
 	* Restricted Boltzmann Machine
 	* Deep Belief Nets
-	
+
+### Reinforcement Learning (RL)
+	* Classical (Pavlovian) versus Operant (Instrumental) conditioning 
+	* Rescorla-Wagner model of conditioining 
+	* Klopf's Drive-reinforcement model
+	* Sutton-Barto's Actor-Critic Model
+	* Value iteration, Policy iteration hand-coded examples
+	* TD model
+	* TD and Dopamine in Basal Ganglia
+	* Q-learning
+	* SARSA
+	* Model-based versus Model-free RL
+	* Deep RL
+	* Examples: 
+		- Actor-Critic solving Cart-pole problem, mountain car problem
+		- TD-Gammon
+		- Alpha-Go
+
 ## Hyperlink to notes
 
 ### Perceptron
