@@ -1,263 +1,511 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/master.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+      integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/master.css" />
     <title>Neural Network notes</title>
-</head>
+  </head>
 
-<body>
-    <!-- <div class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Neural Networks</h1>
-            <h4 class="jumbotron-heading">This webpage will house the entire blog for the course taught by Dr. Raju
-                S. Bapi, SCIS, University of Hyderabad</h4>
-        </div>
-    </div> -->
-
-
+  <body>
     <div class="container research jumbotron">
-        <h1 class="jumbotron-heading text-center">Neural Networks</h1>
-        <!-- <div class="jumbotron text-center"> -->
+      <h1 class="jumbotron-heading text-center">Neural Networks</h1>
 
-        <p class="lead text-justify ">The journey started with the <b>"Introduction to Neural and Cognitive
-                Modeling"</b> (later a textbook came out with the same title) course offered by <a href="https://www.uta.edu/psychology/people/daniel-levine.php">
-                Prof. Daniel Levine </a>at UT
-            Arlington in the late 80's. {He started the
-            fire!}. <a href="https://www.fose1.plymouth.ac.uk/socem/staff/Guido_Bugmann/bugmann.htm">Dr. Guido
-                Bugmann
-            </a> and I
-            offered an <b>"Introduction to Neurocomputing"</b> course during 1995-1997 at University of Plymoouth.
-            Later this
-            has been offered over the years at University of Hyderabad since 1999 and as part of the Statistical
-            Methods in AI (SMAI) course at IIIT-H during 2014-2017. The 2018 batch of MTech students at University
-            of
-            Hyderabad committed it as iPython Notes. Especially, Sai Somanath and Krutika took the leadership in
-            building it ground up.
-            <br /><br />
-            Acknowledgments are due to <a href="https://groups.oist.jp/ncu/kenji-doya">Prof. Kenji Doya </a>,
-            Okinawa
-            Institute of
-            Science and Technology and <a href="https://en.wikipedia.org/wiki/B._L._Deekshatulu"> Prof. B. L.
-                Deekshatulu </a>, for
-            mentorship and<a href="http://jntuhceh.org/faculty_details/2/dept/302"> Prof. N. Yadaiah </a> , JNTU,
-            Hyderabad for
-            friendship. The textbooks of Prof. Simon Haykin and Prof. B. Yegnanarayana have been the guiding
-            lights.
-            <br /><br />
-            These course notes are intended to give the conceptual foundation of Neural Networks and complement the
-            recent spurt in nice blogs on Deep Neural Networks. The notes cover basics of Supervised and
-            Unsupervised
-            Learning and are suitable for self-study with animated examples. Still to come are Recurrent Neural
-            Networks, Reinforcement Learning, Hopfield Network, Boltzmann Machine, Convolutional Neural Networks,
-            and
-            Applications. This is work-in-progress, a long read ahead!
-            Enjoy!
+      <p class="lead text-justify ">
+        The journey started with the
+        <b>"Introduction to Neural and Cognitive Modeling"</b> (later a textbook
+        came out with the same title) course offered by
+        <a href="https://www.uta.edu/psychology/people/daniel-levine.php">
+          Prof. Daniel Levine </a
+        >at UT Arlington in the late 80's. {He started the fire!}.
+        <a
+          href="https://www.fose1.plymouth.ac.uk/socem/staff/Guido_Bugmann/bugmann.htm"
+          >Dr. Guido Bugmann
+        </a>
+        and I offered an <b>"Introduction to Neurocomputing"</b> course during
+        1995-1997 at University of Plymoouth. Later this has been offered over
+        the years at University of Hyderabad since 1999 and as part of the
+        Statistical Methods in AI (SMAI) course at IIIT-H during 2014-2017. The
+        2018 batch of MTech students at University of Hyderabad committed it as
+        iPython Notes. Especially, Sai Somanath and Krutika took the leadership
+        in building it ground up. <br /><br />
+        Acknowledgments are due to
+        <a href="https://groups.oist.jp/ncu/kenji-doya">Prof. Kenji Doya </a>,
+        Okinawa Institute of Science and Technology and
+        <a href="https://en.wikipedia.org/wiki/B._L._Deekshatulu">
+          Prof. B. L. Deekshatulu </a
+        >, for mentorship and<a
+          href="http://jntuhceh.org/faculty_details/2/dept/302"
+        >
+          Prof. N. Yadaiah
+        </a>
+        , JNTU, Hyderabad for friendship. The textbooks of Prof. Simon Haykin
+        and Prof. B. Yegnanarayana have been the guiding lights. <br /><br />
+        These course notes are intended to give the conceptual foundation of
+        Neural Networks and complement the recent spurt in nice blogs on Deep
+        Neural Networks. The notes cover basics of Supervised and Unsupervised
+        Learning and are suitable for self-study with animated examples. Still
+        to come are Recurrent Neural Networks, Reinforcement Learning, Hopfield
+        Network, Boltzmann Machine, Convolutional Neural Networks, and
+        Applications. This is work-in-progress, a long read ahead! Enjoy!
 
-            <br /><br />
-            <span style="float:right;">- Dr. Raju S. Bapi</span>
-        </p>
+        <br /><br />
+        <span style="float:right;">- Dr. Raju S. Bapi</span>
+      </p>
 
+      <p class="lead">
+        To contribute to this blog visit
+        <a href="https://github.com/rajubapi/NN-Notes" target="_blank">here</a>
+      </p>
 
+      <h3 class="jumbotron-heading">1. Perceptron</h3>
 
-
-        <!-- </div> -->
-
-        <h3 class="jumbotron-heading">1. Perceptron</h3>
-
-        <div class="row research">
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Linear Decision Boundary</h4>
-                    <p class="card-text">An introduction to a Perceptronand what it can learn</p>
-                    <a href="./Pages/Perceptron/Perceptron-1/Linear-decision-boundary.html" class="btn btn-primary">
-                        View notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Sketching Feasible region</h4>
-                    <p class="card-text">Learnhow to sketch the feasible region of the solution vector</p>
-                    <a href="./Pages/Perceptron/Perceptron-2/Sketching_Feasibility_Region.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Convergence theorem</h4>
-                    <p class="card-text">The Perceptron Convergence theorem</p>
-                    <a href="./Pages/Perceptron/Perceptron-3/Convergence.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
+      <div class="row research">
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Linear Decision Boundary</h4>
+            <p class="card-text">
+              An introduction to a Perceptronand what it can learn
+            </p>
+            <a
+              href="./Pages/Perceptron/Perceptron-1/Linear-decision-boundary.html"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Perceptron/Perceptron-1"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
         </div>
-        <div class="row research">
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Loss Functions</h4>
-                    <p class="card-text">Learn about the most common loss function out there.</p>
-                    <a href="./Pages/Perceptron/Perceptron-4/loss-function.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Bias v/s No-Bais</h4>
-                    <p class="card-text">What does the bias term do in the equation? Learn its importance...</p>
-                    <a href="./Pages/Perceptron/Perceptron-5/Bias-vs-No-Bias.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Activation functions</h4>
-                    <p class="card-text">What is an activation function?</p>
-                    <a href="./Pages/Perceptron/Perceptron-6/Activation.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Sketching Feasible region</h4>
+            <p class="card-text">
+              Learnhow to sketch the feasible region of the solution vector
+            </p>
+            <a
+              href="./Pages/Perceptron/Perceptron-2/Sketching_Feasibility_Region.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Perceptron/Perceptron-2"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
         </div>
-
-        <h3 class="jumbotron-heading">2. Multi-layer Feed-Forward Neural Network</h3>
-
-        <div class="row research">
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Sigmoid</h4>
-                    <p class="card-text">Learn the influence of bias and weights on the Sigmoid activation function</p>
-                    <a href="./Pages/MLP/MLP-1/Sigmoid_Function.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Function approximation</h4>
-                    <p class="card-text">How does Sigmoid approximate a function?</p>
-                    <a href="./Pages/MLP/MLP-2/Function-approximation-using-sigmoid.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Overfitting</h4>
-                    <p class="card-text">What is Overfitting and how to rectify it?</p>
-                    <a href="./Pages/MLP/MLP-3/Overfitting.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Convergence theorem</h4>
+            <p class="card-text">The Perceptron Convergence theorem</p>
+            <a
+              href="./Pages/Perceptron/Perceptron-3/Convergence.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Perceptron/Perceptron-3"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
         </div>
-
-        <div class="row research">
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Non-linear Classification</h4>
-                    <p class="card-text">What do we gain from having multiple hidden layers?</p>
-                    <a href="./Pages/MLP/MLP-4/Non-linear-classification-examples.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Recoding in XOR</h4>
-                    <p class="card-text">How to refine a probelm in xor?</p>
-                    <a href="./Pages/MLP/MLP-5/Recoding XOR.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Derivation of BackProp equations</h4>
-                    <p class="card-text">Derivation of BackProp equatios with different loss functions and activation
-                        functions</p>
-                    <a href="./Pages/MLP/MLP-6/Derivations.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
+      </div>
+      <div class="row research">
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Loss Functions</h4>
+            <p class="card-text">
+              Learn about the most common loss function out there.
+            </p>
+            <a
+              href="./Pages/Perceptron/Perceptron-4/loss-function.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Perceptron/Perceptron-4"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
         </div>
-        <div class="row research">
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Practical issues: Part 1</h4>
-                    <p class="card-text">Partical issues in training a multilayer feed forward neural network, part 1
-                    </p>
-                    <a href="./Pages/MLP/MLP-7_1/Practical-Issues-Part-1.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Practical issues: Part 2</h4>
-                    <p class="card-text">Partical issues in training a multilayer feed forward neural network, part 2
-                    </p>
-                    <a href="./Pages/MLP/MLP-7_2/Practical Issues.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Bias v/s No-Bais</h4>
+            <p class="card-text">
+              What does the bias term do in the equation? Learn its
+              importance...
+            </p>
+            <a
+              href="./Pages/Perceptron/Perceptron-5/Bias-vs-No-Bias.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Perceptron/Perceptron-5"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
         </div>
-        <h3 class="jumbotron-heading">3. Support Vector Machine</h3>
-
-        <div class="row research">
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Higher Dimension Feature Space </h4>
-                    <p class="card-text">Converting lower dimension dataset to a higher diension feature space</p>
-                    <a href="./Pages/SVM/NLSVM-1/Projection into Higher-dimensional feature space.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Kernels</h4>
-                    <p class="card-text">Kernal and its computational savings</p>
-                    <a href="./Pages/SVM/NLSVM-2/Kernels and Computational Savings.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Cross Validation</h4>
-                    <p class="card-text">What is Cross Validation? And its use in choosing hyper parameters</p>
-                    <a href="./Pages/SVM/NLSVM-4/Cross Validation.html" class="btn btn-primary">View notebook</a>
-                </div>
-            </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Activation functions</h4>
+            <p class="card-text">What is an activation function?</p>
+            <a
+              href="./Pages/Perceptron/Perceptron-6/Activation.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Perceptron/Perceptron-6"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
         </div>
-        <h3 class="jumbotron-heading">4. Unsupervised Learning</h3>
+      </div>
 
-        <div class="row research">
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Hebbian Learning</h4>
-                    <p class="card-text">Brief description about Hebbian Learning and illustration</p>
-                    <a href="./Pages/UnsupervisedLearning/Unsupervised-1/Hebbian Learning.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Competitive Learning</h4>
-                    <p class="card-text">Brief description about Competitive Learning and illustration</p>
-                    <a href="./Pages/UnsupervisedLearning/Unsupervised-2/Competitive Learning.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
-            <div class="card col-sm-12 col-md-4 text-center">
-                <div class="card-body">
-                    <h4 class="card-title">Self Organizing Map</h4>
-                    <p class="card-text">A breif introductio to SOM</p>
-                    <a href="./Pages/UnsupervisedLearning/Unsupervised-3/SOM.html" class="btn btn-primary">View
-                        notebook</a>
-                </div>
-            </div>
+      <h3 class="jumbotron-heading">
+        2. Multi-layer Feed-Forward Neural Network
+      </h3>
+
+      <div class="row research">
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Sigmoid</h4>
+            <p class="card-text">
+              Learn the influence of bias and weights on the Sigmoid activation
+              function
+            </p>
+            <a
+              href="./Pages/MLP/MLP-1/Sigmoid_Function.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-1"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
         </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Function approximation</h4>
+            <p class="card-text">How does Sigmoid approximate a function?</p>
+            <a
+              href="./Pages/MLP/MLP-2/Function-approximation-using-sigmoid.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-2"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Overfitting</h4>
+            <p class="card-text">What is Overfitting and how to rectify it?</p>
+            <a
+              href="./Pages/MLP/MLP-3/Overfitting.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-3"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+      </div>
 
+      <div class="row research">
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Non-linear Classification</h4>
+            <p class="card-text">
+              What do we gain from having multiple hidden layers?
+            </p>
+            <a
+              href="./Pages/MLP/MLP-4/Non-linear-classification-examples.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-4"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Recoding in XOR</h4>
+            <p class="card-text">How to refine a probelm in xor?</p>
+            <a
+              href="./Pages/MLP/MLP-5/Recoding XOR.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-4"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Derivation of BackProp equations</h4>
+            <p class="card-text">
+              Derivation of BackProp equatios with different loss functions and
+              activation functions
+            </p>
+            <a
+              href="./Pages/MLP/MLP-6/Derivations.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-6"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row research">
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Practical issues: Part 1</h4>
+            <p class="card-text">
+              Partical issues in training a multilayer feed forward neural
+              network, part 1
+            </p>
+            <a
+              href="./Pages/MLP/MLP-7_1/Practical-Issues-Part-1.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-7_Part1"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Practical issues: Part 2</h4>
+            <p class="card-text">
+              Partical issues in training a multilayer feed forward neural
+              network, part 2
+            </p>
+            <a
+              href="./Pages/MLP/MLP-7_2/Practical Issues.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/MLFFNN/MLFFNN-7_Part2"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+      </div>
+      <h3 class="jumbotron-heading">3. Support Vector Machine</h3>
+
+      <div class="row research">
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Higher Dimension Feature Space</h4>
+            <p class="card-text">
+              Converting lower dimension dataset to a higher diension feature
+              space
+            </p>
+            <a
+              href="./Pages/SVM/NLSVM-1/Projection into Higher-dimensional feature space.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/SVM/NonLinearSVM-1"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Kernels</h4>
+            <p class="card-text">Kernal and its computational savings</p>
+            <a
+              href="./Pages/SVM/NLSVM-2/Kernels and Computational Savings.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/SVM/NonLinearSVM-2"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Cross Validation</h4>
+            <p class="card-text">
+              What is Cross Validation? And its use in choosing hyper parameters
+            </p>
+            <a
+              href="./Pages/SVM/NLSVM-4/Cross Validation.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/SVM/NonLinearSVM-4"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+      </div>
+      <h3 class="jumbotron-heading">4. Unsupervised Learning</h3>
+
+      <div class="row research">
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Hebbian Learning</h4>
+            <p class="card-text">
+              Brief description about Hebbian Learning and illustration
+            </p>
+            <a
+              href="./Pages/UnsupervisedLearning/Unsupervised-1/Hebbian Learning.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Unsupervised-learning/Unsupervised-1"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Competitive Learning</h4>
+            <p class="card-text">
+              Brief description about Competitive Learning and illustration
+            </p>
+            <a
+              href="./Pages/UnsupervisedLearning/Unsupervised-2/Competitive Learning.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Unsupervised-learning/Unsupervised-2"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+        <div class="card col-sm-12 col-md-4 text-center">
+          <div class="card-body">
+            <h4 class="card-title">Self Organizing Map</h4>
+            <p class="card-text">A breif introductio to SOM</p>
+            <a
+              href="./Pages/UnsupervisedLearning/Unsupervised-3/SOM.html"
+              class="btn btn-primary button"
+              target="_blank"
+              >View notebook</a
+            ><a
+              href="https://github.com/rajubapi/NN-Notes/tree/master/Blog/Unsupervised-learning/Unsupervised-3"
+              class="btn btn-primary button"
+              target="_blank"
+            >
+              View Code</a
+            >
+          </div>
+        </div>
+      </div>
     </div>
     <!-- JavaScript -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+      integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
