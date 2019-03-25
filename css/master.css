@@ -5,7 +5,6 @@
   background-color: #fff;
 }
 
-
 .jumbotron-heading {
   font-weight: 300;
   padding: 10px;
@@ -25,7 +24,7 @@
 
 .card {
   float: left;
-  padding: .75rem;
+  padding: 0.75rem;
   margin-bottom: 2rem;
   border: none;
 }
@@ -35,8 +34,8 @@ img.center {
   margin: 0 auto;
 }
 
-.card>img {
-  margin-bottom: .75rem;
+.card > img {
+  margin-bottom: 0.75rem;
   width: 300px;
   height: 300px;
 }
@@ -54,5 +53,9 @@ footer {
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
+}
+
+.button {
+  margin: 5px;
 }
